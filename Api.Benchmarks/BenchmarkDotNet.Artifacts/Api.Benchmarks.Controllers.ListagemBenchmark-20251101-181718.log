@@ -1,0 +1,230 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 2 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/Users/williangrillo/RiderProjects/Paginacao/Api.Benchmarks/bin/Release/net9.0/Api.Benchmarks-Job-XZKGNT-1/" /p:OutDir="/Users/williangrillo/RiderProjects/Paginacao/Api.Benchmarks/bin/Release/net9.0/Api.Benchmarks-Job-XZKGNT-1/bin/Release/net9.0/" /p:OutputPath="/Users/williangrillo/RiderProjects/Paginacao/Api.Benchmarks/bin/Release/net9.0/Api.Benchmarks-Job-XZKGNT-1/bin/Release/net9.0/" /p:PublishDir="/Users/williangrillo/RiderProjects/Paginacao/Api.Benchmarks/bin/Release/net9.0/Api.Benchmarks-Job-XZKGNT-1/publish/" in /Users/williangrillo/RiderProjects/Paginacao/Api.Benchmarks/bin/Release/net9.0/Api.Benchmarks-Job-XZKGNT-1
+// command took 1.16 sec and exited with 0
+// start dotnet  build -c Release --no-restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/Users/williangrillo/RiderProjects/Paginacao/Api.Benchmarks/bin/Release/net9.0/Api.Benchmarks-Job-XZKGNT-1/" /p:OutDir="/Users/williangrillo/RiderProjects/Paginacao/Api.Benchmarks/bin/Release/net9.0/Api.Benchmarks-Job-XZKGNT-1/bin/Release/net9.0/" /p:OutputPath="/Users/williangrillo/RiderProjects/Paginacao/Api.Benchmarks/bin/Release/net9.0/Api.Benchmarks-Job-XZKGNT-1/bin/Release/net9.0/" /p:PublishDir="/Users/williangrillo/RiderProjects/Paginacao/Api.Benchmarks/bin/Release/net9.0/Api.Benchmarks-Job-XZKGNT-1/publish/" --output "/Users/williangrillo/RiderProjects/Paginacao/Api.Benchmarks/bin/Release/net9.0/Api.Benchmarks-Job-XZKGNT-1/bin/Release/net9.0/" in /Users/williangrillo/RiderProjects/Paginacao/Api.Benchmarks/bin/Release/net9.0/Api.Benchmarks-Job-XZKGNT-1
+// command took 6.99 sec and exited with 0
+// ***** Done, took 00:00:08 (8.19 sec)   *****
+// Found 2 benchmarks:
+//   ListagemBenchmark.'Execução Assíncrona (sequencial)': Job-XZKGNT(Runtime=.NET 9.0, InvocationCount=1, IterationCount=5, UnrollFactor=1, WarmupCount=1)
+//   ListagemBenchmark.'Execução Paralela (WhenAll)': Job-XZKGNT(Runtime=.NET 9.0, InvocationCount=1, IterationCount=5, UnrollFactor=1, WarmupCount=1)
+
+// **************************
+// Benchmark: ListagemBenchmark.'Execução Assíncrona (sequencial)': Job-XZKGNT(Runtime=.NET 9.0, InvocationCount=1, IterationCount=5, UnrollFactor=1, WarmupCount=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Api.Benchmarks-Job-XZKGNT-1.dll --anonymousPipes 127 128 --benchmarkName Api.Benchmarks.Controllers.ListagemBenchmark.PaginacaoAsync --job "Runtime=.NET 9.0, InvocationCount=1, IterationCount=5, UnrollFactor=1, WarmupCount=1" --benchmarkId 0 in /Users/williangrillo/RiderProjects/Paginacao/Api.Benchmarks/bin/Release/net9.0/Api.Benchmarks-Job-XZKGNT-1/bin/Release/net9.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.5
+// Runtime=.NET 9.0.1 (9.0.1, 9.0.124.61010), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Server
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-NZVBQK(InvocationCount=1, IterationCount=5, UnrollFactor=1, WarmupCount=1)
+
+OverheadJitting  1: 1 op, 68000.00 ns, 68.0000 us/op
+WorkloadJitting  1: 1 op, 3353310167.00 ns, 3.3533 s/op
+
+OverheadWarmup   1: 1 op, 250.00 ns, 250.0000 ns/op
+OverheadWarmup   2: 1 op, 250.00 ns, 250.0000 ns/op
+OverheadWarmup   3: 1 op, 84.00 ns, 84.0000 ns/op
+OverheadWarmup   4: 1 op, 500.00 ns, 500.0000 ns/op
+OverheadWarmup   5: 1 op, 250.00 ns, 250.0000 ns/op
+
+OverheadActual   1: 1 op, 292.00 ns, 292.0000 ns/op
+OverheadActual   2: 1 op, 875.00 ns, 875.0000 ns/op
+OverheadActual   3: 1 op, 250.00 ns, 250.0000 ns/op
+OverheadActual   4: 1 op, 42.00 ns, 42.0000 ns/op
+OverheadActual   5: 1 op, 250.00 ns, 250.0000 ns/op
+OverheadActual   6: 1 op, 125.00 ns, 125.0000 ns/op
+OverheadActual   7: 1 op, 250.00 ns, 250.0000 ns/op
+OverheadActual   8: 1 op, 250.00 ns, 250.0000 ns/op
+OverheadActual   9: 1 op, 583.00 ns, 583.0000 ns/op
+OverheadActual  10: 1 op, 333.00 ns, 333.0000 ns/op
+OverheadActual  11: 1 op, 84.00 ns, 84.0000 ns/op
+OverheadActual  12: 1 op, 42.00 ns, 42.0000 ns/op
+OverheadActual  13: 1 op, 333.00 ns, 333.0000 ns/op
+OverheadActual  14: 1 op, 666.00 ns, 666.0000 ns/op
+OverheadActual  15: 1 op, 250.00 ns, 250.0000 ns/op
+OverheadActual  16: 1 op, 125.00 ns, 125.0000 ns/op
+OverheadActual  17: 1 op, 42.00 ns, 42.0000 ns/op
+OverheadActual  18: 1 op, 208.00 ns, 208.0000 ns/op
+OverheadActual  19: 1 op, 209.00 ns, 209.0000 ns/op
+OverheadActual  20: 1 op, 458.00 ns, 458.0000 ns/op
+
+WorkloadWarmup   1: 1 op, 2654959708.00 ns, 2.6550 s/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 2525845542.00 ns, 2.5258 s/op
+WorkloadActual   2: 1 op, 2818714083.00 ns, 2.8187 s/op
+WorkloadActual   3: 1 op, 2697494708.00 ns, 2.6975 s/op
+WorkloadActual   4: 1 op, 2573964500.00 ns, 2.5740 s/op
+WorkloadActual   5: 1 op, 2741311000.00 ns, 2.7413 s/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 2525845292.00 ns, 2.5258 s/op
+WorkloadResult   2: 1 op, 2818713833.00 ns, 2.8187 s/op
+WorkloadResult   3: 1 op, 2697494458.00 ns, 2.6975 s/op
+WorkloadResult   4: 1 op, 2573964250.00 ns, 2.5740 s/op
+WorkloadResult   5: 1 op, 2741310750.00 ns, 2.7413 s/op
+// GC:  0 0 0 899376 1
+// Threading:  130 0 1
+
+// AfterAll
+// Benchmark Process 15959 has exited with code 0.
+
+Mean = 2.671 s, StdErr = 0.054 s (2.01%), N = 5, StdDev = 0.120 s
+Min = 2.526 s, Q1 = 2.574 s, Median = 2.697 s, Q3 = 2.741 s, Max = 2.819 s
+IQR = 0.167 s, LowerFence = 2.323 s, UpperFence = 2.992 s
+ConfidenceInterval = [2.208 s; 3.135 s] (CI 99.9%), Margin = 0.463 s (17.35% of Mean)
+Skewness = -0.05, Kurtosis = 0.99, MValue = 2
+
+// ** Remained 1 (50,0%) benchmark(s) to run. Estimated finish 2025-11-01 18:18 (0h 0m from now) **
+// **************************
+// Benchmark: ListagemBenchmark.'Execução Paralela (WhenAll)': Job-XZKGNT(Runtime=.NET 9.0, InvocationCount=1, IterationCount=5, UnrollFactor=1, WarmupCount=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Api.Benchmarks-Job-XZKGNT-1.dll --anonymousPipes 127 128 --benchmarkName Api.Benchmarks.Controllers.ListagemBenchmark.PaginacaoParalelaAsync --job "Runtime=.NET 9.0, InvocationCount=1, IterationCount=5, UnrollFactor=1, WarmupCount=1" --benchmarkId 1 in /Users/williangrillo/RiderProjects/Paginacao/Api.Benchmarks/bin/Release/net9.0/Api.Benchmarks-Job-XZKGNT-1/bin/Release/net9.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.5
+// Runtime=.NET 9.0.1 (9.0.1, 9.0.124.61010), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Server
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-NZVBQK(InvocationCount=1, IterationCount=5, UnrollFactor=1, WarmupCount=1)
+
+OverheadJitting  1: 1 op, 69375.00 ns, 69.3750 us/op
+WorkloadJitting  1: 1 op, 788157959.00 ns, 788.1580 ms/op
+
+OverheadWarmup   1: 1 op, 333.00 ns, 333.0000 ns/op
+OverheadWarmup   2: 1 op, 125.00 ns, 125.0000 ns/op
+OverheadWarmup   3: 1 op, 41.00 ns, 41.0000 ns/op
+OverheadWarmup   4: 1 op, 42.00 ns, 42.0000 ns/op
+OverheadWarmup   5: 1 op, 125.00 ns, 125.0000 ns/op
+OverheadWarmup   6: 1 op, 166.00 ns, 166.0000 ns/op
+OverheadWarmup   7: 1 op, 0.00 ns, 0.0000 ns/op
+OverheadWarmup   8: 1 op, 83.00 ns, 83.0000 ns/op
+OverheadWarmup   9: 1 op, 41.00 ns, 41.0000 ns/op
+
+OverheadActual   1: 1 op, 41.00 ns, 41.0000 ns/op
+OverheadActual   2: 1 op, 42.00 ns, 42.0000 ns/op
+OverheadActual   3: 1 op, 208.00 ns, 208.0000 ns/op
+OverheadActual   4: 1 op, 208.00 ns, 208.0000 ns/op
+OverheadActual   5: 1 op, 167.00 ns, 167.0000 ns/op
+OverheadActual   6: 1 op, 42.00 ns, 42.0000 ns/op
+OverheadActual   7: 1 op, 250.00 ns, 250.0000 ns/op
+OverheadActual   8: 1 op, 42.00 ns, 42.0000 ns/op
+OverheadActual   9: 1 op, 125.00 ns, 125.0000 ns/op
+OverheadActual  10: 1 op, 0.00 ns, 0.0000 ns/op
+OverheadActual  11: 1 op, 209.00 ns, 209.0000 ns/op
+OverheadActual  12: 1 op, 84.00 ns, 84.0000 ns/op
+OverheadActual  13: 1 op, 166.00 ns, 166.0000 ns/op
+OverheadActual  14: 1 op, 83.00 ns, 83.0000 ns/op
+OverheadActual  15: 1 op, 375.00 ns, 375.0000 ns/op
+OverheadActual  16: 1 op, 208.00 ns, 208.0000 ns/op
+OverheadActual  17: 1 op, 41.00 ns, 41.0000 ns/op
+OverheadActual  18: 1 op, 42.00 ns, 42.0000 ns/op
+OverheadActual  19: 1 op, 0.00 ns, 0.0000 ns/op
+OverheadActual  20: 1 op, 83.00 ns, 83.0000 ns/op
+
+WorkloadWarmup   1: 1 op, 167015875.00 ns, 167.0159 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 164175834.00 ns, 164.1758 ms/op
+WorkloadActual   2: 1 op, 194011333.00 ns, 194.0113 ms/op
+WorkloadActual   3: 1 op, 170151500.00 ns, 170.1515 ms/op
+WorkloadActual   4: 1 op, 335615791.00 ns, 335.6158 ms/op
+WorkloadActual   5: 1 op, 185362209.00 ns, 185.3622 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 164175750.50 ns, 164.1758 ms/op
+WorkloadResult   2: 1 op, 194011249.50 ns, 194.0112 ms/op
+WorkloadResult   3: 1 op, 170151416.50 ns, 170.1514 ms/op
+WorkloadResult   4: 1 op, 185362125.50 ns, 185.3621 ms/op
+// GC:  0 0 0 814168 1
+// Threading:  80 0 1
+
+// AfterAll
+// Benchmark Process 15975 has exited with code 0.
+
+Mean = 178.425 ms, StdErr = 6.847 ms (3.84%), N = 4, StdDev = 13.694 ms
+Min = 164.176 ms, Q1 = 168.657 ms, Median = 177.757 ms, Q3 = 187.524 ms, Max = 194.011 ms
+IQR = 18.867 ms, LowerFence = 140.357 ms, UpperFence = 215.825 ms
+ConfidenceInterval = [89.937 ms; 266.913 ms] (CI 99.9%), Margin = 88.488 ms (49.59% of Mean)
+Skewness = 0.06, Kurtosis = 0.76, MValue = 2
+
+// ** Remained 0 (0,0%) benchmark(s) to run. Estimated finish 2025-11-01 18:17 (0h 0m from now) **
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  BenchmarkDotNet.Artifacts/results/Api.Benchmarks.Controllers.ListagemBenchmark-report.csv
+  BenchmarkDotNet.Artifacts/results/Api.Benchmarks.Controllers.ListagemBenchmark-report-github.md
+  BenchmarkDotNet.Artifacts/results/Api.Benchmarks.Controllers.ListagemBenchmark-report.html
+
+// * Detailed results *
+ListagemBenchmark.'Execução Assíncrona (sequencial)': Job-XZKGNT(Runtime=.NET 9.0, InvocationCount=1, IterationCount=5, UnrollFactor=1, WarmupCount=1)
+Runtime = .NET 9.0.1 (9.0.1, 9.0.124.61010), Arm64 RyuJIT armv8.0-a; GC = Concurrent Server
+Mean = 2.671 s, StdErr = 0.054 s (2.01%), N = 5, StdDev = 0.120 s
+Min = 2.526 s, Q1 = 2.574 s, Median = 2.697 s, Q3 = 2.741 s, Max = 2.819 s
+IQR = 0.167 s, LowerFence = 2.323 s, UpperFence = 2.992 s
+ConfidenceInterval = [2.208 s; 3.135 s] (CI 99.9%), Margin = 0.463 s (17.35% of Mean)
+Skewness = -0.05, Kurtosis = 0.99, MValue = 2
+-------------------- Histogram --------------------
+[2.458 s ; 2.666 s) | @@
+[2.666 s ; 2.850 s) | @@@
+---------------------------------------------------
+
+ListagemBenchmark.'Execução Paralela (WhenAll)': Job-XZKGNT(Runtime=.NET 9.0, InvocationCount=1, IterationCount=5, UnrollFactor=1, WarmupCount=1)
+Runtime = .NET 9.0.1 (9.0.1, 9.0.124.61010), Arm64 RyuJIT armv8.0-a; GC = Concurrent Server
+Mean = 178.425 ms, StdErr = 6.847 ms (3.84%), N = 4, StdDev = 13.694 ms
+Min = 164.176 ms, Q1 = 168.657 ms, Median = 177.757 ms, Q3 = 187.524 ms, Max = 194.011 ms
+IQR = 18.867 ms, LowerFence = 140.357 ms, UpperFence = 215.825 ms
+ConfidenceInterval = [89.937 ms; 266.913 ms] (CI 99.9%), Margin = 88.488 ms (49.59% of Mean)
+Skewness = 0.06, Kurtosis = 0.76, MValue = 2
+-------------------- Histogram --------------------
+[163.447 ms ; 186.091 ms) | @@@
+[186.091 ms ; 205.333 ms) | @
+---------------------------------------------------
+
+// * Summary *
+
+BenchmarkDotNet v0.15.5, macOS 26.0.1 (25A362) [Darwin 25.0.0]
+Apple M2, 1 CPU, 8 logical and 8 physical cores
+.NET SDK 9.0.102
+  [Host]     : .NET 9.0.1 (9.0.1, 9.0.124.61010), Arm64 RyuJIT armv8.0-a
+  Job-XZKGNT : .NET 9.0.1 (9.0.1, 9.0.124.61010), Arm64 RyuJIT armv8.0-a
+
+Runtime=.NET 9.0  InvocationCount=1  IterationCount=5  
+UnrollFactor=1  WarmupCount=1  
+
+| Method                             | Mean       | Error     | StdDev    | Allocated |
+|----------------------------------- |-----------:|----------:|----------:|----------:|
+| 'Execução Assíncrona (sequencial)' | 2,671.5 ms | 463.48 ms | 120.36 ms |  878.3 KB |
+| 'Execução Paralela (WhenAll)'      |   178.4 ms |  88.49 ms |  13.69 ms | 795.09 KB |
+
+// * Hints *
+Outliers
+  ListagemBenchmark.'Execução Paralela (WhenAll)': Runtime=.NET 9.0, InvocationCount=1, IterationCount=5, UnrollFactor=1, WarmupCount=1 -> 1 outlier  was  removed (335.62 ms)
+
+// * Legends *
+  Mean      : Arithmetic mean of all measurements
+  Error     : Half of 99.9% confidence interval
+  StdDev    : Standard deviation of all measurements
+  Allocated : Allocated memory per single operation (managed only, inclusive, 1KB = 1024B)
+  1 ms      : 1 Millisecond (0.001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+Run time: 00:00:25 (25.54 sec), executed benchmarks: 2
+
+Global total time: 00:00:33 (33.94 sec), executed benchmarks: 2
+// * Artifacts cleanup *
+Artifacts cleanup is finished

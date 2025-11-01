@@ -1,5 +1,3 @@
-// See https://aka.ms/new-console-template for more information
-
 using Api.Benchmarks.Controllers;
 using BenchmarkDotNet.Running;
 

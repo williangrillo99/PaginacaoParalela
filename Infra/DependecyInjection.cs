@@ -2,7 +2,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Refit;                                     
 using Domain.Interface;                        
 using Infra.Repositories;                       
-using Infra.Http;                               
+using Infra.Http;
+using Microsoft.Extensions.Http.Resilience;
 
 namespace Infra;
 
@@ -18,11 +19,18 @@ public static class DependencyInjection
     private static void AdicionarApiRickMory(IServiceCollection services)
     {
         services
-            .AddRefitClient<IRickMoryApi>() 
+            .AddRefitClient<IRickMoryApi>()
             .ConfigureHttpClient(client =>
             {
                 client.BaseAddress = new Uri("https://rickandmortyapi.com/api");
-            })
-            .AddStandardResilienceHandler(); 
+
+                client.Timeout = TimeSpan.FromSeconds(500); // timeout do HttpClient
+            }).AddStandardResilienceHandler()
+            .Configure(o =>
+            {
+                o.TotalRequestTimeout.Timeout = TimeSpan.FromSeconds(90);
+
+                o.Retry.MaxRetryAttempts = 1;
+            });
     }
 }

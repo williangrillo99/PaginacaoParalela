@@ -22,5 +22,5 @@ public sealed class PaginacaoWmResponse
     public required int TotalPaginas { get; init; }
     
     [JsonPropertyName("next")]
-    public string? ProximaPagina { get; init; }
+    public string? ProximaPagina { get; set; }
 }

@@ -1,12 +1,13 @@
 using Application;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Jobs;
 using Infra;
 
 namespace Api.Benchmarks.Controllers;
 
-[MemoryDiagnoser, RankColumn]
-[WarmupCount(1)]
-[IterationCount(5)] 
+
+[SimpleJob(runtimeMoniker: RuntimeMoniker.Net90, warmupCount: 1, iterationCount: 5, invocationCount: 1)]
+[MemoryDiagnoser]
 public class ListagemBenchmark
 {
     private ServiceProvider _provider = default!;
@@ -17,26 +18,24 @@ public class ListagemBenchmark
     {
         var services = new ServiceCollection();
 
-        services.AddApplication(); // seu extension method
-        services.AddInfra();       // seu extension method (repos, Refit, etc.)
+        services.AddApplication();
+        services.AddInfra(); 
 
         _provider = services.BuildServiceProvider();
 
-        // Resolve o serviço que você quer medir
         _service = _provider.GetRequiredService<IListagemPaginacaoAppService>();
     }
 
-    [GlobalCleanup]
-    public void Cleanup()
-    {
-        _provider.Dispose();
-    }
 
     [Benchmark(Description = "Execução Assíncrona (sequencial)")]
     public async Task PaginacaoAsync()
-        => await _service.PaginacaoAsync(CancellationToken.None);
+    {
+        await _service.PaginacaoAsync(CancellationToken.None);
+    }
 
     [Benchmark(Description = "Execução Paralela (WhenAll)")]
     public async Task PaginacaoParalelaAsync()
-        => await _service.PaginacaoParalelaAsync(CancellationToken.None);
+    {
+        await _service.PaginacaoParalelaAsync(CancellationToken.None);
+    }
 }
