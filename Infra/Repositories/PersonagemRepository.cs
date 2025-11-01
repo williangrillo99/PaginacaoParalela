@@ -11,7 +11,7 @@ public sealed class PersonagemRepository(IRickMoryApi api) : IPersonagemReposito
 {
     private readonly int _paginaInicial = 1 ;
     
-    public async Task<List<Personagem>> ListarAsync(CancellationToken cancellationToken)
+    public async Task<List<Personagem>> ListagemParalelaAsync (CancellationToken cancellationToken)
     {
         var response = await api.ListarAsync(_paginaInicial, cancellationToken);
 
@@ -46,14 +46,7 @@ public sealed class PersonagemRepository(IRickMoryApi api) : IPersonagemReposito
         return retorno;
     }
 
-    private static List<Personagem> MapearResponse(List<PersonagemReponseWm> listaPersonagensResponse)
-    {
-        return listaPersonagensResponse
-            .Select(p => new Personagem(p.Nome))
-            .ToList();
-    }
-
-    public async Task<List<Personagem>> ListarComRecursividadeAsync(int pagina, CancellationToken cancellationToken)
+    public async Task<List<Personagem>> ListagemAsync(int pagina, CancellationToken cancellationToken)
     {
         var response = await api.ListarAsync(pagina, cancellationToken);
 
@@ -67,11 +60,17 @@ public sealed class PersonagemRepository(IRickMoryApi api) : IPersonagemReposito
             return retorno;
         }
         
-        var itensRestantes = await ListarComRecursividadeAsync(pagina +1, cancellationToken);
+        var itensRestantes = await ListagemAsync(pagina +1, cancellationToken);
         
         retorno.AddRange(itensRestantes);
         
         return retorno;
     }
-
+    
+    private static List<Personagem> MapearResponse(List<PersonagemWmReponse> listaPersonagensResponse)
+    {
+        return listaPersonagensResponse
+            .Select(p => new Personagem(p.Nome))
+            .ToList();
+    }
 }

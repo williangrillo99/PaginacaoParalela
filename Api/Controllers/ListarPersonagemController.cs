@@ -1,27 +1,27 @@
 using Application;
-using Application.ListarPersonagem;
 using Domain;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;
 
 [ApiController]
-public sealed class ListarPersonagemController(IMediator mediator) : ControllerBase
+public sealed class ListarPersonagemController(IListagemPaginacaoAppService listagemPaginacaoAppService) 
+    : ControllerBase
 {
-    [HttpGet("listar")]
-    public async Task<ActionResult<List<Personagem>>> ListarAsync(
-        ListarPersonagemRequest request, 
+    [HttpGet("paralela")]
+    public async Task<ActionResult<List<Personagem>>> PaginacaoParalelaAsync(
         CancellationToken cancellationToken)
     {
-        var queryMediator = new ListarPersonagemQuery
-        {
-            Nome = request.Nome,
-            Status = request.Status,
-        };
-        var personagens = await mediator.Send(
-            queryMediator, cancellationToken);
         
-        return Ok(personagens);
+        var listagem = await listagemPaginacaoAppService.PaginacaoParalelaAsync(cancellationToken);
+        return Ok(listagem);
+    }
+    
+    [HttpGet("async")]
+    public async Task<ActionResult<List<Personagem>>> PaginacaoAsync(
+        CancellationToken cancellationToken)
+    {
+        var listagem = await listagemPaginacaoAppService.PaginacaoAsync(cancellationToken);
+        return Ok(listagem);
     }
 }

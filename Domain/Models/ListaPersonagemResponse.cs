@@ -5,18 +5,18 @@ namespace Domain.Models;
 public sealed record ListaPersonagemResponseWm
 {
     [JsonPropertyName("info")]
-    public required PaginacaoResponseWm Paginacao { get; init; }
+    public required PaginacaoWmResponse Paginacao { get; init; }
     
     [JsonPropertyName("results")]
-    public required List<PersonagemReponseWm> Personagens { get; init; }
+    public required List<PersonagemWmReponse> Personagens { get; init; }
 }
 
-public class PersonagemReponseWm
+public class PersonagemWmReponse
 {
     [JsonPropertyName("name")]
     public required string Nome { get; init; }
 }
-public class PaginacaoResponseWm
+public sealed class PaginacaoWmResponse
 {
     [JsonPropertyName("pages")]
     public required int TotalPaginas { get; init; }
