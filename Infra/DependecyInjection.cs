@@ -23,14 +23,6 @@ public static class DependencyInjection
             .ConfigureHttpClient(client =>
             {
                 client.BaseAddress = new Uri("https://rickandmortyapi.com/api");
-
-                client.Timeout = TimeSpan.FromSeconds(500); // timeout do HttpClient
-            }).AddStandardResilienceHandler()
-            .Configure(o =>
-            {
-                o.TotalRequestTimeout.Timeout = TimeSpan.FromSeconds(90);
-
-                o.Retry.MaxRetryAttempts = 1;
             });
     }
 }
