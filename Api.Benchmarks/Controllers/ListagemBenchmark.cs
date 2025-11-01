@@ -1,32 +1,42 @@
-using Microsoft.AspNetCore.Mvc;
+using Application;
+using BenchmarkDotNet.Attributes;
+using Infra;
 
 namespace Api.Benchmarks.Controllers;
 
-[ApiController]
-[Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+[MemoryDiagnoser, RankColumn]
+[WarmupCount(1)]
+[IterationCount(5)] 
+public class ListagemBenchmark
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+    private ServiceProvider _provider = default!;
+    private IListagemPaginacaoAppService _service = default!;
 
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    [GlobalSetup]
+    public void Setup()
     {
-        _logger = logger;
+        var services = new ServiceCollection();
+
+        services.AddApplication(); // seu extension method
+        services.AddInfra();       // seu extension method (repos, Refit, etc.)
+
+        _provider = services.BuildServiceProvider();
+
+        // Resolve o serviço que você quer medir
+        _service = _provider.GetRequiredService<IListagemPaginacaoAppService>();
     }
 
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    [GlobalCleanup]
+    public void Cleanup()
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+        _provider.Dispose();
     }
+
+    [Benchmark(Description = "Execução Assíncrona (sequencial)")]
+    public async Task PaginacaoAsync()
+        => await _service.PaginacaoAsync(CancellationToken.None);
+
+    [Benchmark(Description = "Execução Paralela (WhenAll)")]
+    public async Task PaginacaoParalelaAsync()
+        => await _service.PaginacaoParalelaAsync(CancellationToken.None);
 }
